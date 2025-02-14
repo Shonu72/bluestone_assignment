@@ -1,6 +1,8 @@
 import 'package:bluestone_assignment/core/constants/asset_constant.dart';
+import 'package:bluestone_assignment/core/constants/string_constant.dart';
 import 'package:bluestone_assignment/core/utils/colors.dart';
 import 'package:bluestone_assignment/src/controllers/product_controller.dart';
+import 'package:bluestone_assignment/src/views/widgets/app_button.dart';
 import 'package:bluestone_assignment/src/views/widgets/circle_container.dart';
 import 'package:bluestone_assignment/src/views/widgets/small_container.dart';
 import 'package:bluestone_assignment/src/views/widgets/text_widget.dart';
@@ -55,8 +57,8 @@ class _ProductDetailsState extends State<ProductDetails> {
               onPressed: () {
                 context.pop();
               },
-              iconColor: Colors.white,
-              backgroundColor: Colors.blue.withValues(alpha: 0.7),
+              iconColor: AppColors.white,
+              backgroundColor: AppColors.blue950,
               padding: EdgeInsets.only(left: 10),
             ),
             Spacer(),
@@ -67,8 +69,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   onPressed: () {
                     // Add to wishlist
                   },
-                  iconColor: Colors.white,
-                  backgroundColor: Colors.blue.withValues(alpha: 0.7),
+                  iconColor: AppColors.white,
+                  backgroundColor: AppColors.blue950,
                   padding: EdgeInsets.only(left: 5, right: 5),
                 ),
                 SizedBox(width: 1.w),
@@ -77,8 +79,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   onPressed: () {
                     // Share product
                   },
-                  iconColor: Colors.white,
-                  backgroundColor: Colors.blue.withValues(alpha: 0.7),
+                  iconColor: AppColors.white,
+                  backgroundColor: AppColors.blue950,
                   padding: EdgeInsets.only(left: 5, right: 5),
                 ),
               ],
@@ -144,7 +146,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       icon: Icons.thumb_up,
                       endText: "90%",
                       showDivider: false,
-                      color: AppColors.blue,
+                      color: AppColors.blue900,
                     ),
                     SizedBox(width: 3.w),
                     SmallContainer(
@@ -157,10 +159,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ],
                 ),
-
                 SizedBox(height: 2.h),
-
-                // Price Section
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                   decoration: BoxDecoration(
@@ -209,49 +208,23 @@ class _ProductDetailsState extends State<ProductDetails> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
+            AppButton(
+              text: AppString.addToCart,
+              onTap: () {},
               width: 40.w,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle Buy Now action
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.amber,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 1.5.h),
-                ),
-                child: Text(
-                  "Add to Cart",
-                  style: theme.bodyLarge?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              color: Colors.amber,
+              textColor: AppColors.white,
+              borderColor: Colors.amber,
+              radius: 8,
             ),
-            SizedBox(
+            AppButton(
+              text: AppString.buyNow,
+              onTap: () {},
               width: 40.w,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle Buy Now action
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 1.5.h),
-                ),
-                child: Text(
-                  "Buy Now",
-                  style: theme.bodyLarge?.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              color: AppColors.blue950,
+              textColor: AppColors.white,
+              borderColor: AppColors.blue950,
+              radius: 8,
             ),
           ],
         ),

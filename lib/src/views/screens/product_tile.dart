@@ -59,7 +59,7 @@ class ProductTile extends StatelessWidget {
                           style: theme.bodySmall,
                         ),
                         SizedBox(width: 4),
-                        Icon(Icons.star, color: AppColors.white, size: 20),
+                        Icon(Icons.star, color: Colors.amber, size: 20),
                         SizedBox(width: 4),
                         AppText(
                           "|  ${product.rating.count}",
