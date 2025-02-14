@@ -17,7 +17,7 @@ class CustomAppBar {
     bool centerTitle = true,
   }) {
     return AppBar(
-      toolbarHeight: 7.h,
+      toolbarHeight: 6.h,
       elevation: 0,
       backgroundColor: backgroundColor,
       centerTitle: false, // Disable Flutter's default centering behavior

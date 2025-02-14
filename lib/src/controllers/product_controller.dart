@@ -5,14 +5,15 @@ import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   late final ProductApiService _productApiService;
-  
+
   ProductController({required ProductApiService productApiService})
       : _productApiService = productApiService;
 
   final products = <ProductResponse>[].obs;
+  final selectedProduct = Rx<ProductResponse?>(null);
   RxBool isLoading = false.obs;
 
-// fetch all products
+  // Fetch all products
   Future<void> fetchProducts() async {
     isLoading.value = true;
     final successOrFailure = await _productApiService.fetchProducts();
@@ -28,7 +29,7 @@ class ProductController extends GetxController {
     );
   }
 
-  // fetch single product
+  // Fetch single product
   Future<void> fetchSingleProduct(int id) async {
     isLoading.value = true;
     final successOrFailure = await _productApiService.fetchSingleProduct(id);
@@ -39,8 +40,18 @@ class ProductController extends GetxController {
       },
       (response) {
         isLoading.value = false;
-        products.value = [response];
+        ProductResponse newProduct =
+            ProductResponse.fromJson(response.toJson());
+        bool isDuplicate =
+            products.any((product) => product.id == newProduct.id);
+        if (!isDuplicate) {
+          products.add(newProduct);
+        }
       },
     );
+  }
+
+  void clearSelectedProduct() {
+    selectedProduct.value = null;
   }
 }

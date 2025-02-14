@@ -17,9 +17,11 @@ class ProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        color: AppColors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
@@ -54,12 +56,14 @@ class ProductTile extends StatelessWidget {
                       children: [
                         AppText(
                           product.rating.rate.toStringAsFixed(1),
+                          style: theme.bodySmall,
                         ),
                         SizedBox(width: 4),
-                        Icon(Icons.star, color: AppColors.white, size: 16),
+                        Icon(Icons.star, color: AppColors.white, size: 20),
                         SizedBox(width: 4),
                         AppText(
                           "|  ${product.rating.count}",
+                          style: theme.bodySmall,
                         ),
                       ],
                     ),
@@ -74,14 +78,19 @@ class ProductTile extends StatelessWidget {
                 children: [
                   AppText(
                     product.title,
+                    style: theme.bodySmall?.copyWith(
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                  SizedBox(height: 4),
+                  SizedBox(height: 0.6.h),
                   AppText(
                     product.category,
+                    style: theme.bodySmall?.copyWith(color: AppColors.blue),
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 0.6.h),
                   AppText(
                     "\$${product.price.toStringAsFixed(2)}",
+                    style: theme.bodyMedium,
                   ),
                 ],
               ),
